@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:09:25 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/09 18:25:47 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/11/16 20:01:24 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,13 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &other)
 	{
-		this->_name = other._name;
 		this->_grade = other._grade;
-		return *this;
 	}
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-}
-
-void Bureaucrat::setName(std::string name)
-{
-	this->_name = name;
 }
 
 void Bureaucrat::setGrade(int grade)
@@ -48,7 +42,7 @@ void Bureaucrat::setGrade(int grade)
 	this->_grade = grade;
 }
 
-std::string Bureaucrat::getName()
+const std::string &Bureaucrat::getName() const
 {
 	return this->_name;
 }
