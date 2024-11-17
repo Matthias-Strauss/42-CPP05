@@ -6,14 +6,14 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/09 17:43:47 by mstrauss          #+#    #+#              #
-#    Updated: 2024/11/16 20:52:47 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/11/17 17:40:44 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	bureaucrat
 
-CC			=	c++
-CFLAGS		=	-Wall -Werror -Wextra -std=c++17
+CXX			=	c++
+CXXFLAGS		=	-Wall -Werror -Wextra -std=c++17
 INC			=   -I$(CURDIR)
 
 SRC 		=	main.cpp\
@@ -22,18 +22,18 @@ SRC 		=	main.cpp\
 
 HEADER		=	Bureaucrat.hpp\
 				Exceptions.hpp
-OBJ_DIR		=	/obj
-OBJ 		=	 $(SRC:.cpp=.o)
+OBJ_DIR		=	obj
+OBJ 		=	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 RM			=	rm -rf
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@ $(INC)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

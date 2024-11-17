@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:28:37 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/16 20:51:05 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/11/17 17:42:20 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(void)
 	try
 	{
 		// init with too low grade
-		Bureaucrat *B1 = new Bureaucrat("Bob", 151);
+		Bureaucrat B1 = Bureaucrat("Bob", 151);
 		// -> constructor throws exception
 	}
 	catch (const std::exception &e)
@@ -42,6 +42,7 @@ int main(void)
 		// init with too high grade
 		Bureaucrat *B2 = new Bureaucrat("Chris", 0);
 		//  -> constructor throws exception
+		(void)B2;
 	}
 	catch (const std::exception &e)
 	{
