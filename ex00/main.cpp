@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:28:37 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/17 17:42:20 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:36:39 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ int main(void)
 	// ########################################
 	// ################ TESTS #################
 	// ########################################
+	std::cout << "#############################################################" << std::endl;
+	std::cout << "################ Testing Operator Overload << ###############" << std::endl;
+	std::cout << "#############################################################" << std::endl;
+	std::cout << "Initializing Bureaucrat using name:Anna, grade:100." << std::endl;
+	Bureaucrat B0 = Bureaucrat("Anna", 100);
+	std::cout << "testing operator overload by calling 'std::cout << B0 << std::endl'." << std::endl;
+	std::cout << B0 << std::endl;
+	std::cout << std::endl;
+
 	std::cout << "#############################################################" << std::endl;
 	std::cout << "######## Testing Constructor with invalid GRADE #############" << std::endl;
 	std::cout << "#############################################################" << std::endl;
@@ -130,7 +139,7 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "#############################################################" << std::endl;
-	std::cout << "################ Testing setGrade() Exceptions ###################" << std::endl;
+	std::cout << "############## Testing setGrade() Exceptions ################" << std::endl;
 	std::cout << "#############################################################" << std::endl;
 	{
 		std::cout << "Initializing Bureaucrat B6 with arguments name:Hans, grade:42" << std::endl;
