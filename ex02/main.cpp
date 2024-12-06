@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:28:37 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 18:51:16 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:58:01 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "ShrubberyCreationForm.hpp"
 
 int main(void) {
-	std::cout << "#############################################################" << std::endl;
+	std::cout << "\n#############################################################" << std::endl;
 	std::cout << "############### Testing Bureaucrat Creation #################" << std::endl;
 	std::cout << "#############################################################" << std::endl;
 	try {
-		std::cout << "Trying to create bureaucrat with grade 0 (too high):" << std::endl;
+		std::cout << "\nTrying to create bureaucrat with grade 0 (too high):" << std::endl;
 		Bureaucrat tooHigh("TooHigh", 0);
 	} catch (std::exception &e) {
 		std::cout << "Exception caught: " << e.what() << std::endl;
@@ -34,8 +34,8 @@ int main(void) {
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
-	std::cout << "#############################################################" << std::endl;
-	std::cout << "############## Testing ShrubberyCreationForm ###############" << std::endl;
+	std::cout << "\n#############################################################" << std::endl;
+	std::cout << "############## Testing ShrubberyCreationForm ################" << std::endl;
 	std::cout << "#############################################################" << std::endl;
 	try {
 		Bureaucrat highGrade("HighGrade", 1);
@@ -60,8 +60,8 @@ int main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "#############################################################" << std::endl;
-	std::cout << "############### Testing RobotomyRequestForm ################" << std::endl;
+	std::cout << "\n#############################################################" << std::endl;
+	std::cout << "############### Testing RobotomyRequestForm #################" << std::endl;
 	std::cout << "#############################################################" << std::endl;
 	try {
 		Bureaucrat boss("Boss", 1);
@@ -82,14 +82,17 @@ int main(void) {
 
 		std::cout << "\nExecuting with high grade multiple times (50% success rate):" << std::endl;
 		boss.executeForm(form);
+		std::cout << std::endl;
 		boss.executeForm(form);
+		std::cout << std::endl;
 		boss.executeForm(form);
+		std::cout << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "#############################################################" << std::endl;
-	std::cout << "############## Testing PresidentialPardonForm ##############" << std::endl;
+	std::cout << "\n#############################################################" << std::endl;
+	std::cout << "############## Testing PresidentialPardonForm ###############" << std::endl;
 	std::cout << "#############################################################" << std::endl;
 	try {
 		Bureaucrat president("President", 1);
@@ -110,6 +113,7 @@ int main(void) {
 	} catch (std::exception &e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 
 	return 0;
 }
