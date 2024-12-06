@@ -6,11 +6,14 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:09:25 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/23 18:07:29 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:47:51 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
+}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade < 1)
@@ -66,7 +69,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
 	return os;
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
 	if (form.isSigned()) {
 		std::cout << this->getName() << " couldn't sign " << form.getName() << " because it is already signed." << std::endl;
 		return;

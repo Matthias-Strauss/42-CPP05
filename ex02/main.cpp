@@ -6,12 +6,12 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:28:37 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/23 18:09:41 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:28:32 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int main(void) {
 	std::cout << "#############################################################" << std::endl;
@@ -22,7 +22,7 @@ int main(void) {
 		std::cout << "Testing signing using valid conditions" << std::endl;
 		std::cout << "//////////////////////////////////////" << std::endl;
 		std::cout << "Creating Form F1 with name:F1, sigGrade:50, execGrade:25" << std::endl;
-		Form F1 = Form("F1", 50, 25);
+		AForm F1 = AForm("F1", 50, 25);
 		std::cout << "Form F1 details: " << F1 << std::endl;
 
 		std::cout << "Creating Bureaucrat B1 with name:Alice, grade:45" << std::endl;
@@ -49,14 +49,14 @@ int main(void) {
 	{
 		try {
 			std::cout << "Creating Form F2 with invalid sign grade: 0" << std::endl;
-			Form F2 = Form("Form2", 0, 25);
+			AForm F2 = AForm("Form2", 0, 25);
 		} catch (const std::exception &e) {
 			std::cout << "Exception caught: " << e.what() << std::endl;
 		}
 
 		try {
 			std::cout << "Creating Form F3 with invalid exec grade: 151" << std::endl;
-			Form F3 = Form("Form3", 50, 151);
+			AForm F3 = AForm("Form3", 50, 151);
 		} catch (const std::exception &e) {
 			std::cout << "Exception caught: " << e.what() << std::endl;
 		}
@@ -68,7 +68,7 @@ int main(void) {
 	std::cout << "#############################################################" << std::endl;
 	{
 		std::cout << "Creating Form F4 with name: 'F4', sigGrade:30, execGrade:20" << std::endl;
-		Form F4 = Form("F4", 30, 20);
+		AForm F4 = AForm("F4", 30, 20);
 		std::cout << "Form F4 details: " << F4 << std::endl;
 
 		std::cout << "Checking if F4 is signed (expected: false)" << std::endl;

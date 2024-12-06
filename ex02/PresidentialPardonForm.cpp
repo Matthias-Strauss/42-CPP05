@@ -6,12 +6,16 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:05:11 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 16:05:22 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:47:23 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
+
+PresidentialPardonForm::PresidentialPardonForm()
+	: AForm("PresidentialPardon", signGrade, execGrade), _target("default") {
+}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 	: AForm("PresidentialPardon", signGrade, execGrade), _target(target) {

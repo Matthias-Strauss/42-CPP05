@@ -6,12 +6,16 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:59:14 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/24 16:00:45 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:17:10 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
+
+RobotomyRequestForm::RobotomyRequestForm()
+	: AForm("RobotomyRequest", signGrade, execGrade), _target("default") {
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 	: AForm("RobotomyRequest", signGrade, execGrade), _target(target) {
