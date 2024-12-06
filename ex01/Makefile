@@ -6,7 +6,7 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/09 17:43:47 by mstrauss          #+#    #+#              #
-#    Updated: 2024/11/17 17:40:44 by mstrauss         ###   ########.fr        #
+#    Updated: 2024/11/23 18:04:03 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,11 @@ INC			=   -I$(CURDIR)
 
 SRC 		=	main.cpp\
 				Bureaucrat.cpp\
-				Exceptions.cpp
+				Form.cpp
 
 HEADER		=	Bureaucrat.hpp\
-				Exceptions.hpp
+				Form.hpp
+
 OBJ_DIR		=	obj
 OBJ 		=	$(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 

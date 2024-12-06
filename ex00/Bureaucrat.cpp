@@ -6,19 +6,18 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:09:25 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/19 15:59:07 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/11/23 13:12:44 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Exceptions.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 }
 
@@ -42,9 +41,9 @@ Bureaucrat::~Bureaucrat()
 void Bureaucrat::setGrade(int grade)
 {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 }
 
@@ -60,16 +59,16 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (_grade - 1 < 1)
-		throw GradeTooHighException();
-	this->_grade--;
+	if (_grade <= 1)
+		throw Bureaucrat::GradeTooHighException();
+	_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (_grade + 1 > 150)
-		throw GradeTooLowException();
-	this->_grade++;
+	if (_grade >= 150)
+		throw Bureaucrat::GradeTooLowException();
+	_grade++;
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)

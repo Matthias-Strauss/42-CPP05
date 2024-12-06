@@ -2,3 +2,5 @@
 .vscode
 a.out
 *.pdf
+.idea
+.clang-format
