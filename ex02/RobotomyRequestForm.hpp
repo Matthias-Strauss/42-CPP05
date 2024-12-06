@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:59:08 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 18:17:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #include <ctime>
 
 class RobotomyRequestForm : public AForm {
+protected:
+	void executeAction(const Bureaucrat &executor) const;
+
 private:
 	std::string _target;
 

@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:40:14 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 18:17:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 class ShrubberyCreationForm : public AForm {
 private:
 	std::string _target;
+
+protected:
+	void executeAction(const Bureaucrat &executor) const;
 
 public:
 	ShrubberyCreationForm();

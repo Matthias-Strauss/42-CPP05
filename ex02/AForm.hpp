@@ -26,6 +26,10 @@ private:
 	const int _sigGrade;
 	const int _execGrade;
 
+protected:
+	// Pure virtual function for concrete implementations
+	virtual void executeAction(const Bureaucrat &executor) const = 0;
+
 public:
 	AForm();
 	AForm(std::string name, int sigGrade, int execGrade);
@@ -39,7 +43,8 @@ public:
 
 	void beSigned(Bureaucrat &bureaucrat);
 
-	virtual void execute(Bureaucrat const &executor) const = 0;
+	// Public execute function that checks requirements
+	void execute(Bureaucrat const &executor) const;
 
 	class GradeTooHighException : public std::exception {
 	public:

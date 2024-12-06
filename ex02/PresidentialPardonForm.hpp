@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:04:47 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:33 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm {
+protected:
+	void executeAction(const Bureaucrat &executor) const;
+
 private:
 	std::string _target;
 

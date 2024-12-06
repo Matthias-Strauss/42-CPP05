@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:04:55 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:44 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:28:26 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ public:
 	void decrementGrade();
 
 	void signForm(AForm &form);
+	void executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception {
 	public:

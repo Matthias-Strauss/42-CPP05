@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:59:14 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 18:17:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:26:17 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return *this;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
-	if (!this->isSigned())
-		throw AForm::NotSignedException();
-	if (executor.getGrade() > this->getExecGrade())
-		throw AForm::GradeTooLowException();
-
+void RobotomyRequestForm::executeAction(const Bureaucrat &executor) const {
+	(void) executor;// Unused parameter
 	std::cout << "* SOME DRILLING NOISES *" << std::endl;
 
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));

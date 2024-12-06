@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:47:00 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 18:17:10 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,8 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
-	if (!this->isSigned())
-		throw AForm::NotSignedException();
-	if (executor.getGrade() > this->getExecGrade())
-		throw AForm::GradeTooLowException();
-
+void ShrubberyCreationForm::executeAction(const Bureaucrat &executor) const {
+	(void) executor;// Unused parameter
 	std::string filename = _target + "_shrubbery";
 	std::ofstream outFile(filename.c_str());
 

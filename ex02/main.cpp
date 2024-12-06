@@ -6,105 +6,110 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:28:37 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/12/06 16:28:32 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:51:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void) {
 	std::cout << "#############################################################" << std::endl;
-	std::cout << "#################### Testing Form Class #####################" << std::endl;
+	std::cout << "############### Testing Bureaucrat Creation #################" << std::endl;
 	std::cout << "#############################################################" << std::endl;
-	{
-		std::cout << "//////////////////////////////////////" << std::endl;
-		std::cout << "Testing signing using valid conditions" << std::endl;
-		std::cout << "//////////////////////////////////////" << std::endl;
-		std::cout << "Creating Form F1 with name:F1, sigGrade:50, execGrade:25" << std::endl;
-		AForm F1 = AForm("F1", 50, 25);
-		std::cout << "Form F1 details: " << F1 << std::endl;
-
-		std::cout << "Creating Bureaucrat B1 with name:Alice, grade:45" << std::endl;
-		Bureaucrat B1 = Bureaucrat("Alice", 45);
-		std::cout << "B1 details: " << B1 << std::endl;
-
-		std::cout << "B1 attempting to sign F1 ..." << std::endl;
-		B1.signForm(F1);
-		std::cout << "Form F1 details after signing: " << F1 << std::endl;
-
-		std::cout << "Creating Bureaucrat B2 with name: 'Bob', grade: 55" << std::endl;
-		Bureaucrat B2 = Bureaucrat("Bob", 55);
-		std::cout << "B2 details: " << B2 << std::endl;
-
-		std::cout << "B2 attempting to sign F1" << std::endl;
-		B2.signForm(F1);
-		std::cout << "Form F1 details after B2's attempt: " << F1 << std::endl;
+	try {
+		std::cout << "Trying to create bureaucrat with grade 0 (too high):" << std::endl;
+		Bureaucrat tooHigh("TooHigh", 0);
+	} catch (std::exception &e) {
+		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
-	std::cout << std::endl;
 
-	std::cout << "#############################################################" << std::endl;
-	std::cout << "############## Testing Form Constructor Exceptions ##########" << std::endl;
-	std::cout << "#############################################################" << std::endl;
-	{
-		try {
-			std::cout << "Creating Form F2 with invalid sign grade: 0" << std::endl;
-			AForm F2 = AForm("Form2", 0, 25);
-		} catch (const std::exception &e) {
-			std::cout << "Exception caught: " << e.what() << std::endl;
-		}
-
-		try {
-			std::cout << "Creating Form F3 with invalid exec grade: 151" << std::endl;
-			AForm F3 = AForm("Form3", 50, 151);
-		} catch (const std::exception &e) {
-			std::cout << "Exception caught: " << e.what() << std::endl;
-		}
+	try {
+		std::cout << "\nTrying to create bureaucrat with grade 151 (too low):" << std::endl;
+		Bureaucrat tooLow("TooLow", 151);
+	} catch (std::exception &e) {
+		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
-	std::cout << std::endl;
 
 	std::cout << "#############################################################" << std::endl;
-	std::cout << "############## Testing Form Member Functions ################" << std::endl;
+	std::cout << "############## Testing ShrubberyCreationForm ###############" << std::endl;
 	std::cout << "#############################################################" << std::endl;
-	{
-		std::cout << "Creating Form F4 with name: 'F4', sigGrade:30, execGrade:20" << std::endl;
-		AForm F4 = AForm("F4", 30, 20);
-		std::cout << "Form F4 details: " << F4 << std::endl;
+	try {
+		Bureaucrat highGrade("HighGrade", 1);
+		Bureaucrat lowGrade("LowGrade", 150);
+		ShrubberyCreationForm form("garden");
 
-		std::cout << "Checking if F4 is signed (expected: false)" << std::endl;
-		std::cout << "Is F4 signed? " << (F4.isSigned() ? "Yes" : "No") << std::endl;
+		std::cout << "\nTrying to execute unsigned form:" << std::endl;
+		highGrade.executeForm(form);
 
-		std::cout << "Creating Bureaucrat B3 with name: 'Charlie', grade: 25" << std::endl;
-		Bureaucrat B3 = Bureaucrat("Charlie", 25);
-		std::cout << "B3 details: " << B3 << std::endl;
+		std::cout << "\nTrying to sign with low grade (should fail):" << std::endl;
+		lowGrade.signForm(form);
 
-		std::cout << "B3 attempting to sign F4" << std::endl;
-		B3.signForm(F4);
-		std::cout << "Form F4 details after signing: " << F4 << std::endl;
+		std::cout << "\nSigning with high grade:" << std::endl;
+		highGrade.signForm(form);
 
-		std::cout << "Checking if F4 is signed (expected: true)" << std::endl;
-		std::cout << "Is F4 signed? " << (F4.isSigned() ? "Yes" : "No") << std::endl;
+		std::cout << "\nTrying to execute with low grade (should fail):" << std::endl;
+		lowGrade.executeForm(form);
 
-		std::cout << "Getting the sign grade of F4 (should be 30)" << std::endl;
-		std::cout << "Sign grade of F4: " << F4.getSigGrade() << std::endl;
-
-		std::cout << "Getting the exec grade of F4 (should be 20)" << std::endl;
-		std::cout << "Exec grade of F4: " << F4.getExecGrade() << std::endl;
-
-		std::cout << "Attempting to sign F4 with B3(grade: 25)" << std::endl;
-		B3.signForm(F4);
-		std::cout << "Form F4 details after signing: " << F4 << std::endl;
-
-		std::cout << "Creating Bureaucrat B4 with name: 'CEO', grade: 1" << std::endl;
-		Bureaucrat B4 = Bureaucrat("CEO", 1);
-		std::cout << "B4 details: " << B4 << std::endl;
-
-		std::cout << "Attempting to sign F4 with B4(grade: 1)" << std::endl;
-		B4.signForm(F4);
-		std::cout << "Form F4 details after signing: " << F4 << std::endl;
+		std::cout << "\nExecuting with high grade:" << std::endl;
+		highGrade.executeForm(form);
+	} catch (std::exception &e) {
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
-	std::cout << std::endl;
 
+	std::cout << "#############################################################" << std::endl;
+	std::cout << "############### Testing RobotomyRequestForm ################" << std::endl;
+	std::cout << "#############################################################" << std::endl;
+	try {
+		Bureaucrat boss("Boss", 1);
+		Bureaucrat intern("Intern", 150);
+		RobotomyRequestForm form("target");
+
+		std::cout << "\nTrying to execute unsigned form:" << std::endl;
+		boss.executeForm(form);
+
+		std::cout << "\nTrying to sign with low grade (should fail):" << std::endl;
+		intern.signForm(form);
+
+		std::cout << "\nSigning with high grade:" << std::endl;
+		boss.signForm(form);
+
+		std::cout << "\nTrying to execute with low grade (should fail):" << std::endl;
+		intern.executeForm(form);
+
+		std::cout << "\nExecuting with high grade multiple times (50% success rate):" << std::endl;
+		boss.executeForm(form);
+		boss.executeForm(form);
+		boss.executeForm(form);
+	} catch (std::exception &e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+
+	std::cout << "#############################################################" << std::endl;
+	std::cout << "############## Testing PresidentialPardonForm ##############" << std::endl;
+	std::cout << "#############################################################" << std::endl;
+	try {
+		Bureaucrat president("President", 1);
+		Bureaucrat secretary("Secretary", 25);
+		PresidentialPardonForm form("criminal");
+
+		std::cout << "\nTrying to execute unsigned form:" << std::endl;
+		president.executeForm(form);
+
+		std::cout << "\nSigning with secretary (exactly right grade for signing):" << std::endl;
+		secretary.signForm(form);
+
+		std::cout << "\nTrying to execute with secretary (too low grade):" << std::endl;
+		secretary.executeForm(form);
+
+		std::cout << "\nExecuting with president:" << std::endl;
+		president.executeForm(form);
+	} catch (std::exception &e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 
 	return 0;
 }

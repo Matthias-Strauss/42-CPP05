@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:45:14 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/23 18:18:24 by mstrauss         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:16 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,13 @@ void AForm::beSigned(Bureaucrat &bureaucrat) {
 		this->_signed = true;
 	else
 		throw AForm::GradeTooLowException();
+}
+
+void AForm::execute(Bureaucrat const &executor) const {
+	if (!this->isSigned())
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->getExecGrade())
+		throw AForm::GradeTooLowException();
+
+	this->executeAction(executor);
 }
