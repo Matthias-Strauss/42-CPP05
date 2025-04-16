@@ -6,7 +6,7 @@
 /*   By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:45:12 by mstrauss          #+#    #+#             */
-/*   Updated: 2024/11/23 18:19:57 by mstrauss         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:29:43 by mstrauss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ private:
 	bool _signed;
 	const int _sigGrade;
 	const int _execGrade;
+	Form();
 
 public:
-	Form();
 	Form(std::string name, int sigGrade, int execGrade);
 	Form(const Form &other);
 	~Form();

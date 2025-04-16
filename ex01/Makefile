@@ -6,14 +6,14 @@
 #    By: mstrauss <mstrauss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/09 17:43:47 by mstrauss          #+#    #+#              #
-#    Updated: 2024/11/23 18:04:03 by mstrauss         ###   ########.fr        #
+#    Updated: 2025/04/16 18:31:04 by mstrauss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	bureaucrat
 
 CXX			=	c++
-CXXFLAGS		=	-Wall -Werror -Wextra -std=c++17
+CXXFLAGS	=	-Wall -Werror -Wextra -g -std=c++17
 INC			=   -I$(CURDIR)
 
 SRC 		=	main.cpp\

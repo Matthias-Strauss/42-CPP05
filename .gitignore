@@ -4,3 +4,4 @@ a.out
 *.pdf
 .idea
 .clang-format
+.gitignore
